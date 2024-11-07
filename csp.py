@@ -56,23 +56,41 @@ class SudokuCSP:
                         arcs.add(((row, col), neighbor))
         return sorted(list(arcs))
 
+def read_puzzle(fileName):
+    input_puzzle = []
+    with open(fileName, "r") as f:
+        for line in f:
+            row = [int(num) for num in line.strip().split()]
+            input_puzzle.append(row)
+    return input_puzzle
+
+def main():
+    input_puzzle = read_puzzle("input.txt")
+    sudoku_csp = SudokuCSP(input_puzzle)
+    row, col = 8,8
+    print("Domains initialized:", sudoku_csp.domains)
+    print(f'Neighbors for cell ({row},{col}):', sudoku_csp.neighbors[row][col])
+
+
+if __name__ == "__main__":
+    main()
+
 # Example usage:
 # Assuming input_puzzle is a 9x9 grid (list of lists) with 0 representing empty cells
-input_puzzle = [
-    [5, 3, 0, 0, 7, 0, 0, 0, 0],
-    [6, 0, 0, 1, 9, 5, 0, 0, 0],
-    [0, 9, 8, 0, 0, 0, 0, 6, 0],
-    [8, 0, 0, 0, 6, 0, 0, 0, 3],
-    [4, 0, 0, 8, 0, 3, 0, 0, 1],
-    [7, 0, 0, 0, 2, 0, 0, 0, 6],
-    [0, 6, 0, 0, 0, 0, 2, 8, 0],
-    [0, 0, 0, 4, 1, 9, 0, 0, 5],
-    [0, 0, 0, 0, 8, 0, 0, 7, 9]
-]
+# input_puzzle = [
+#     [5, 3, 0, 0, 7, 0, 0, 0, 0],
+#     [6, 0, 0, 1, 9, 5, 0, 0, 0],
+#     [0, 9, 8, 0, 0, 0, 0, 6, 0],
+#     [8, 0, 0, 0, 6, 0, 0, 0, 3],
+#     [4, 0, 0, 8, 0, 3, 0, 0, 1],
+#     [7, 0, 0, 0, 2, 0, 0, 0, 6],
+#     [0, 6, 0, 0, 0, 0, 2, 8, 0],
+#     [0, 0, 0, 4, 1, 9, 0, 0, 5],
+#     [0, 0, 0, 0, 8, 0, 0, 7, 9]
+# ]
 
-sudoku_csp = SudokuCSP(input_puzzle)
-row, col = 8,8
-print("Domains initialized:", sudoku_csp.domains)
-print(f'Neighbors for cell ({row},{col}):', sudoku_csp.neighbors[row][col])
-
+# sudoku_csp = SudokuCSP(input_puzzle)
+# row, col = 8,8
+# print("Domains initialized:", sudoku_csp.domains)
+# print(f'Neighbors for cell ({row},{col}):', sudoku_csp.neighbors[row][col])
 

@@ -1,6 +1,6 @@
 #imports
 from collections import deque
-from csp import SudokuCSP
+from csp import SudokuCSP, read_puzzle
 """
 main ac3 algorithm to enforce arc consistency and find solution
 """
@@ -101,19 +101,21 @@ def print_solution(csp):
         
 def main():
     
-    #example puzzle
-    inputPuzzle = [
-        [5, 3, 0, 0, 7, 0, 0, 0, 0],
-        [6, 0, 0, 1, 9, 5, 0, 0, 0],
-        [0, 9, 8, 0, 0, 0, 0, 6, 0],
-        [8, 0, 0, 0, 6, 0, 0, 0, 3],
-        [4, 0, 0, 8, 0, 3, 0, 0, 1],
-        [7, 0, 0, 0, 2, 0, 0, 0, 6],
-        [0, 6, 0, 0, 0, 0, 2, 8, 0],
-        [0, 0, 0, 4, 1, 9, 0, 0, 5],
-        [0, 0, 0, 0, 8, 0, 0, 7, 9]
-    ]
-    csp = SudokuCSP(inputPuzzle)
+    input_puzzle = read_puzzle("input.txt")
+
+    # #example puzzle
+    # inputPuzzle = [
+    #     [5, 3, 0, 0, 7, 0, 0, 0, 0],
+    #     [6, 0, 0, 1, 9, 5, 0, 0, 0],
+    #     [0, 9, 8, 0, 0, 0, 0, 6, 0],
+    #     [8, 0, 0, 0, 6, 0, 0, 0, 3],
+    #     [4, 0, 0, 8, 0, 3, 0, 0, 1],
+    #     [7, 0, 0, 0, 2, 0, 0, 0, 6],
+    #     [0, 6, 0, 0, 0, 0, 2, 8, 0],
+    #     [0, 0, 0, 4, 1, 9, 0, 0, 5],
+    #     [0, 0, 0, 0, 8, 0, 0, 7, 9]
+    # ]
+    csp = SudokuCSP(input_puzzle)
     ac3(csp)
     
 if __name__ == "__main__":
