@@ -51,9 +51,7 @@ class SudokuCSP:
         for row in range(9):
             for col in range(9):
                 for neighbor in self.neighbors[row][col]:
-                # Ensure we only add one direction of each arc
-                    if (neighbor, (row, col)) not in arcs:
-                        arcs.add(((row, col), neighbor))
+                    arcs.add(((row, col), neighbor))
         return sorted(list(arcs))
 
 def read_puzzle(fileName):
