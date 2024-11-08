@@ -1,7 +1,6 @@
 #imports
 from collections import deque
 from csp import SudokuCSP, read_puzzle
-
 """
 main ac3 algorithm to enforce arc consistency and find solution
 """
